@@ -4,23 +4,24 @@ import java.util.Scanner;
 
 public class Calendar {
 
-
 	public static void main(String[] args) {
+		String prom = "cal> ";
 		Scanner sc = new Scanner(System.in);
-		System.out.println("몇번 반복할까요?: ");
-		int loop = sc.nextInt();
-		int i = 0;
-
 		getDays get = new getDays();
+		int month = 0;
 
-		while (i < loop) {
+		while (true) {
 			System.out.println("몇월을 알고싶으세요?");
-			int month = sc.nextInt();
+			System.out.print(prom);
+			month = sc.nextInt();
+			if (month == -1) {
+				break;
+			}
+			else if(month > 12){
+				continue;
+			}
 			System.out.printf("%d월은 %d일 까지있습니다.\n", month, get.getMonthDays(month));
-			i++;
 		}
-		
-		get.printCalendar();
 
 		sc.close();
 	}
